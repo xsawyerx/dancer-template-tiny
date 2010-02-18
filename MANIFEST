@@ -1,6 +1,7 @@
 Build.PL
 Changes
 MANIFEST
+MANIFEST.SKIP
 README
 lib/Dancer/Template/Tiny.pm
 t/00-load.t
@@ -8,3 +9,5 @@ t/manifest.t
 t/pod-coverage.t
 t/pod.t
 t/render.t
+Makefile.PL
+META.yml
