@@ -1,5 +1,10 @@
 Revision history for Dancer-Template-Tiny
 
+0.02    22.02.10
+        * Updated to Template::Tiny 0.11 because of API change
+        (Thanks goes to Adam Kennedy)
+        * Wrapped POD for the hell of it
+
 0.01    18.02.10
         Yay!
 
