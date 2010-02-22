@@ -12,7 +12,7 @@ my $builder = Module::Build->new(
     },
     requires => {
         'Dancer'         => 1.150,
-        'Template::Tiny' => 0.10,
+        'Template::Tiny' => 0.11,
     },
     add_to_cleanup      => [ 'Dancer-Template-Tiny-*' ],
     create_makefile_pl => 'traditional',
