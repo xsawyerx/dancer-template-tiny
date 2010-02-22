@@ -7,7 +7,7 @@ use Dancer::FileUtils 'read_file_content';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub render($$$) {
     my ( $self, $template, $tokens ) = @_;
@@ -19,9 +19,12 @@ sub render($$$) {
                             ${$template} :
                             read_file_content($template);
 
-    my $content = Template::Tiny->new->process(
+    my $content;
+
+    Template::Tiny->new->process(
         \$template_data,
         $tokens,
+        \$content,
     ) or die "Could not process template file '$template'";
 
     return $content;
@@ -37,17 +40,21 @@ Dancer::Template::Tiny - Template::Tiny backend to Dancer
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
 This template engine allows you to use L<Template::Tiny> in L<Dancer>.
 
-L<Template::Tiny> is an implementation of a subset of L<Template::Toolkit> (the major parts) which takes much less memory and is faster. If you're only using the main functions of Template::Toolkit, you could use Template::Tiny. You can also seemlessly move back to Template::Toolkit whenver you want.
+L<Template::Tiny> is an implementation of a subset of L<Template::Toolkit> (the
+major parts) which takes much less memory and is faster. If you're only using
+the main functions of Template::Toolkit, you could use Template::Tiny. You can
+also seemlessly move back to Template::Toolkit whenver you want.
 
 You can read more on L<Template::Tiny>.
 
-To use this engine, all you need to configure in your L<Dancer>'s C<config.yaml>:
+To use this engine, all you need to configure in your L<Dancer>'s
+C<config.yaml>:
 
     template: "tiny"
 
@@ -56,13 +63,16 @@ Of course, you can also set this B<while> working using C<set>:
     # code code code
     set template => 'tiny';
 
-Since L<Dancer> has internal support for a wrapper-like option with the C<layout> configuration option, you have a WRAPPER like with L<Template::Toolkit> even though L<Template::Tiny> doesn't really support it. :)
+Since L<Dancer> has internal support for a wrapper-like option with the
+C<layout> configuration option, you have a WRAPPER like with
+L<Template::Toolkit> even though L<Template::Tiny> doesn't really support it. :)
 
 =head1 SUBROUTINES/METHODS
 
 =head2 render
 
-Renders the template. Accepts a string to a file or a reference to a string of the template.
+Renders the template. Accepts a string to a file or a reference to a string of
+the template.
 
 =head1 AUTHOR
 
@@ -70,9 +80,11 @@ Sawyer X, C<< <xsawyerx at cpan.org> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-dancer-template-tiny at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dancer-Template-Tiny>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+Please report any bugs or feature requests to
+C<bug-dancer-template-tiny at rt.cpan.org>, or through the web interface at
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dancer-Template-Tiny>.
+I will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
 
 =head1 SUPPORT
 
