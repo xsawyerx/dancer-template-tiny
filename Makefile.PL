@@ -6,7 +6,7 @@ WriteMakefile
           'VERSION_FROM' => 'lib/Dancer/Template/Tiny.pm',
           'PREREQ_PM' => {
                            'Dancer' => '1.15',
-                           'Template::Tiny' => '0.1',
+                           'Template::Tiny' => '0.11',
                            'Test::More' => 0
                          },
           'INSTALLDIRS' => 'site',
