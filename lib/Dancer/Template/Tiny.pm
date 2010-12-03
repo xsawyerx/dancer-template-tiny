@@ -8,6 +8,8 @@ use Dancer::FileUtils 'read_file_content';
 
 use base 'Dancer::Template::Abstract';
 
+my $_template = Template::Tiny->new;
+
 sub render($$$) {
     my ( $self, $template, $tokens ) = @_;
 
@@ -20,7 +22,7 @@ sub render($$$) {
 
     my $content;
 
-    Template::Tiny->new->process(
+    $_template->process(
         \$template_data,
         $tokens,
         \$content,
