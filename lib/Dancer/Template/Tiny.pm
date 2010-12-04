@@ -1,13 +1,14 @@
-package Dancer::Template::Tiny;
-
 use strict;
 use warnings;
+package Dancer::Template::Tiny;
+# ABSTRACT: Template::Tiny backend to Dancer
+
 use Template::Tiny;
 use Dancer::FileUtils 'read_file_content';
 
 use base 'Dancer::Template::Abstract';
 
-our $VERSION = '0.02';
+my $_template = Template::Tiny->new;
 
 sub render($$$) {
     my ( $self, $template, $tokens ) = @_;
@@ -21,7 +22,7 @@ sub render($$$) {
 
     my $content;
 
-    Template::Tiny->new->process(
+    $_template->process(
         \$template_data,
         $tokens,
         \$content,
@@ -33,14 +34,6 @@ sub render($$$) {
 1;
 
 __END__
-
-=head1 NAME
-
-Dancer::Template::Tiny - Template::Tiny backend to Dancer
-
-=head1 VERSION
-
-Version 0.02
 
 =head1 SYNOPSIS
 
